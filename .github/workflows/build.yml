@@ -31,7 +31,7 @@ jobs:
     - name: Change go module
       run: |
         mkdir v2
-        directory=$(find . -type d -not -path '*/.*')
+        directory=$(find . -type d -not -path '*/.*' | grep -E "./")
         mv $directory v2/
         cp go.mod v2/
         go mod edit -module github.com/make-money-fast/pb/v2 v2/go.mod

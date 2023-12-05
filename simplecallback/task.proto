@@ -1,0 +1,58 @@
+syntax = "proto3";
+option go_package = "simple-callback/pb";
+package proto;
+
+
+service TaskService {
+  rpc CreateTask(CreateTaskRequest) returns (CreateTaskResponse) {};
+  rpc GetTask(GetTaskRequest) returns (GetTaskResponse) {};
+}
+
+enum TaskType {
+  UnknownTaskType = 0 ;
+  EveryDay = 1 ;
+  Once = 2;
+}
+
+enum CallbackType {
+  UnknownCallbackType = 0 ;
+  Http = 1 ;
+}
+
+enum Status {
+  UnknownStatus = 0 ;
+  Created = 1;
+  Pending = 2;
+  Success = 3;
+  Failed = 4;
+}
+
+message Task {
+  string id = 1;
+  string name = 2;
+  TaskType task_type = 3;
+  string task_timer = 4;
+  Status status = 5;
+  string create_time = 6;
+  string update_time = 7;
+  string params = 8;
+  CallbackType task_callback_type = 9;
+  string callback_address = 10;
+  string latest_response = 11;
+}
+
+message CreateTaskRequest {
+  Task task = 1;
+}
+
+message CreateTaskResponse {
+  string id = 1;
+}
+
+message GetTaskRequest {
+  string id = 1;
+}
+
+message GetTaskResponse {
+  Task task = 1;
+}

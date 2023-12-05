@@ -27,3 +27,14 @@ jobs:
 
     - name: Build
       run: make build-proto
+
+    - name: Commit files
+      run: |
+        git config --local user.email "gitrobot@clearcode.cn"
+        git config --local user.name "gitrobot"
+        git commit -a -m "build proto files"
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        branch: v2

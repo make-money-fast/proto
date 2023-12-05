@@ -5,9 +5,9 @@ name: build
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "dev" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "dev" ]
 
 jobs:
   build:
@@ -28,14 +28,6 @@ jobs:
     - name: Build
       run: make build-proto
 
-    - name: Change go module
-      run: |
-        mkdir v2
-        directory=$(find . -type d -not -path '*/.*' | grep -E "./" | grep -v "v2")
-        mv $directory v2/
-        cp go.mod v2/
-        go mod edit -module github.com/make-money-fast/pb/v2 v2/go.mod
-
     - name: Commit files
       run: |
         git config --local user.email "gitrobot@clearcode.cn"
@@ -47,5 +39,5 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: v2
+        branch: main
         force: true

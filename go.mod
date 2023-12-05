@@ -1,3 +1,3 @@
-module github.com/make-money-fast/pb/v2
+module github.com/make-money-fast/proto/v2
 
 go 1.20

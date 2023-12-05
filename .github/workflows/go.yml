@@ -32,6 +32,7 @@ jobs:
       run: |
         git config --local user.email "gitrobot@clearcode.cn"
         git config --local user.name "gitrobot"
+        git add . 
         git commit -a -m "build proto files"
 
     - name: Push changes

@@ -28,6 +28,12 @@ jobs:
     - name: Build
       run: make build-proto
 
+    - name: Change go module
+      run: |
+        mkdir -p v2 
+        cp -r ./* v2 
+        go mod edit -module github.com/make-money-fast/pb/v2 v2/go.mod
+
     - name: Commit files
       run: |
         git config --local user.email "gitrobot@clearcode.cn"

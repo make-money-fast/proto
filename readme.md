@@ -8,7 +8,7 @@ pb 文件在 v2 分支的包里面, main 分支用来构建
 
 安装: 
 ```shell
-go get github.com/make-money-fast/pb
+go get github.com/make-money-fast/pb@version
 ```
 
 #### simplecallback

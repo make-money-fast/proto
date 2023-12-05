@@ -13,6 +13,15 @@ proto:
 	@mv simple-callback/pbs/*.go pb/
 	@rm -rf simple-callback
 
-.PHONY: proto
-proto-ci:
-	@sh ./build.sh
+.PHONY:install-go-plugins
+install-go-plugins:
+	@go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+	@go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+
+.PHONY: build-proto
+build-proto: install-go-plugins
+	@bash build.sh
+
+.PHONY:
+tidy:
+	@go mod tidy

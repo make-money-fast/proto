@@ -1,5 +1,5 @@
 syntax = "proto3";
-option go_package = "simple-callback/pb";
+option go_package = "/simplecallback";
 package proto;
 
 

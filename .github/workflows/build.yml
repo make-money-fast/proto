@@ -34,7 +34,7 @@ jobs:
         git config --local user.name "gitrobot"
         git add . 
         git commit -a -m "build proto files"
-        git tag -a -m "build proto files" v$(date +%Y%M%d%H%M%S)
+        git tag -a -m "build proto files" v0.$(date +%Y%M%d%H%M%S)
 
     - name: Push changes
       uses: ad-m/github-push-action@master

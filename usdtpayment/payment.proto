@@ -1,0 +1,27 @@
+syntax = "proto3";
+option go_package = "/usdtpayment";
+package proto;
+
+service PaymentService {
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse) ;
+}
+
+enum Chain {
+  UnknownChain = 0;
+  Trc20 = 1;
+}
+
+message CreateOrderRequest {
+  float price = 1;
+  string desc = 2;
+  string orderId = 3;
+  string async_notify_url = 4;
+  string return_url = 5;
+  int64 timeout = 6;
+  Chain chain = 7 ;
+}
+
+message CreateOrderResponse {
+  string system_order_id = 1;
+}
+

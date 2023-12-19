@@ -1,0 +1,35 @@
+syntax = "proto3";
+option go_package = "/usdtpayment";
+package proto;
+
+import "payment.proto";
+
+service AddressService {
+  rpc BatchImport(BatchImportRequest) returns (BatchImportResponse) ;
+  rpc ToggleStatus(ToggleStatusRequest) returns (ToggleStatusResponse) ;
+}
+
+enum AddressStatus {
+  UnknownAddressStatus = 0 ;
+  Active = 1 ;
+  Disable = 2;
+}
+
+message BatchImportRequest {
+  int64 counterSize = 1 ; // 初始化计数器的大小, 默认 = 30
+  Chain chain = 2;
+  AddressStatus status = 3;
+  repeated string addresses = 4;
+}
+
+message BatchImportResponse {
+
+}
+
+message ToggleStatusRequest {
+  string address = 1;
+}
+
+message ToggleStatusResponse {
+
+}

@@ -22,6 +22,6 @@ message CreateOrderRequest {
 }
 
 message CreateOrderResponse {
-  string system_order_id = 1;
+  string pay_url = 1 ;
 }
 

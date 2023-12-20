@@ -51,9 +51,8 @@ jobs:
         WECHAT_WORK_BOT_WEBHOOK: ${{secrets.WECHAT_WORK_BOT_WEBHOOK}}
       with:
         msgtype: markdown
-        content: |
-          ### <font color="warning">构建失败</font>
-          > 地址: https://github.com/user/repository/actions/runs/${{ github.run_id }}
+        content:  "### <font color=\"warning\">构建失败</font> \n 
+          > 地址: https://github.com/user/repository/actions/runs/${{ github.run_id }}"
         mentioned_list: '["@all"]'
         mentioned_mobile_list: '["@all"]'
 
@@ -64,8 +63,7 @@ jobs:
         WECHAT_WORK_BOT_WEBHOOK: ${{secrets.WECHAT_WORK_BOT_WEBHOOK}}
       with:
         msgtype: markdown
-        content: |
-          ### <font color="info">构建成功</font>
-          > 地址: https://github.com/user/repository/actions/runs/${{ github.run_id }}
+        content:  "### <font color=\"info\">构建成功</font> \n 
+          > 地址: https://github.com/user/repository/actions/runs/${{ github.run_id }}"
         mentioned_list: '["@all"]'
         mentioned_mobile_list: '["@all"]'

@@ -45,25 +45,16 @@ jobs:
         tags: true
 
     - name: WeChat Work notification by text
-      if: ${{ failure() }}
-      uses: chf007/action-wechat-work@master
+      run: |
+        content="### <font color=\"info\">构建成功</font> \n> 地址: https://github.com/user/repository/actions/runs/${{ github.run_id }}"
+        curl $WECHAT_WORK_BOT_WEBHOOK \
+        -H 'Content-Type: application/json' \
+        -d '
+        {
+          "msgtype": "markdown",
+          "markdown": {
+            "content": "${content}"
+          }
+        }'
       env:
         WECHAT_WORK_BOT_WEBHOOK: ${{secrets.WECHAT_WORK_BOT_WEBHOOK}}
-      with:
-        msgtype: markdown
-        content:  "### <font color=\"warning\">构建失败</font> \n 
-          > 地址: https://github.com/user/repository/actions/runs/${{ github.run_id }}"
-        mentioned_list: '["@all"]'
-        mentioned_mobile_list: '["@all"]'
-
-    - name: WeChat Work notification by text
-      if: ${{ success() }}
-      uses: chf007/action-wechat-work@master
-      env:
-        WECHAT_WORK_BOT_WEBHOOK: ${{secrets.WECHAT_WORK_BOT_WEBHOOK}}
-      with:
-        msgtype: markdown
-        content:  "### <font color=\"info\">构建成功</font> \n 
-          > 地址: https://github.com/user/repository/actions/runs/${{ github.run_id }}"
-        mentioned_list: '["@all"]'
-        mentioned_mobile_list: '["@all"]'

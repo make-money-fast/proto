@@ -22,13 +22,13 @@ function run_build() {
 }
 
 function on_success() {
-  curl https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=693axxx6-7aoc-4bc4-97a0-0ec2sifa5aaa \
+  curl https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=1853e329-c669-410e-9e0a-fa88e1a54b09 \
           -H 'Content-Type: application/json' \
           -d '{"msgtype": "text","text": {"content": "构建完成"}}'
 }
 
 function fail() {
-   curl https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=693axxx6-7aoc-4bc4-97a0-0ec2sifa5aaa \
+   curl https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=1853e329-c669-410e-9e0a-fa88e1a54b09 \
             -H 'Content-Type: application/json' \
             -d '{"msgtype": "text","text": {"content": "构建失败"}}'
 }

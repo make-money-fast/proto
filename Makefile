@@ -20,8 +20,14 @@ install-go-plugins:
 
 .PHONY: build-proto
 build-proto: install-go-plugins
-	@bash build.sh
+	@bash build.sh build
 
 .PHONY:
 tidy:
 	@go mod tidy
+
+success:
+	@bash build.sh success
+
+fail:
+	@bash build.sh fail

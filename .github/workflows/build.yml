@@ -45,10 +45,9 @@ jobs:
         tags: true
 
     - name: WeChat Work notification by text
-      run: |
-        content="### <font color=\"info\">构建成功</font> \n> 地址: https://github.com/user/repository/actions/runs/${{ github.run_id }}"
-        curl https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=693axxx6-7aoc-4bc4-97a0-0ec2sifa5aaa \
-        -H 'Content-Type: application/json' \
-        -d "{\"msgtype\": \"markdown\",\"markdown\": {\"content\": \"${content}\"}}"
-      env:
-        WECHAT_WORK_BOT_WEBHOOK: ${{secrets.WECHAT_WORK_BOT_WEBHOOK}}
+      if: ${{ success() }}
+      run: make success
+
+    - name: WeChat Work notification by text
+      if: ${{ failure() }}
+      run: make fail

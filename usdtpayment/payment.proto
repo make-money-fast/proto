@@ -23,5 +23,6 @@ message CreateOrderRequest {
 
 message CreateOrderResponse {
   string pay_url = 1 ;
+  string gateway_order_no = 2;
 }
 
